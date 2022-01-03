@@ -1,0 +1,56 @@
+module wmtest;
+
+	// Inputs
+	reg clck;
+	reg rst;
+	reg coin;
+	reg lid_r;
+	reg d_wash;
+	reg T;
+
+	// Outputs
+	wire soak;
+	wire rinse;
+	wire spin;
+	wire wash;
+	wire pause;
+	wire brek;
+
+	// Instantiate the Unit Under Test (UUT)
+	wmfpga uut (
+		.clck(clck), 
+		.rst(rst), 
+		.coin(coin), 
+		.lid_r(lid_r), 
+		.d_wash(d_wash), 
+		.T(T), 
+		.soak(soak), 
+		.rinse(rinse), 
+		.spin(spin), 
+		.wash(wash), 
+		.pause(pause), 
+		.brek(brek)
+	);
+
+initial begin
+		// Initialize Inputs
+		clck = 0;
+		rst = 0;
+		coin = 2;
+		lid_r = 0;
+		d_wash = 0;
+		T = 0;
+      #10 rst=1;
+      #10 coin=1;T=1;
+      #20 d_wash=1;
+      #20 lid_r=1;d_wash=0;coin=0;T=0;
+		
+      
+
+      
+		end
+      always
+	
+      #10 clck=~clck;
+      
+endmodule
